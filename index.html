@@ -1,0 +1,79 @@
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<title>Pick A Question - Retrospective</title>
+</head>
+
+<body>
+<h1> Pick A Question - Retrospective </h1>
+
+Question: <input type="text" id="txtQuestionToAdd"/>
+<input type="button" id="btnAdd" class="btnAdd" value='Add'/>
+
+<div id="cards">
+<table border="1" id="cardsContainer">
+
+
+</table>
+
+
+</div>
+
+<div id="log"/>
+
+
+<script language="javascript">
+<!--
+var addButton = $("#btnAdd");
+var txtboxQuestion = $("#txtQuestionToAdd");
+var cardsTable= $("#cardsContainer");
+var questions = {};
+var latestQuestionNumber = 0;
+
+
+
+addButton.on("click", function(){
+  var numberOfQuestions = latestQuestionNumber;
+  var currentQuestionNumber = numberOfQuestions + 1;
+  var currentQuestionText = txtboxQuestion.val();
+  var newRow = $("<tr>",{
+      id:'questionRow'+ currentQuestionNumber
+  });
+  var newColumn = $("<td>");
+  var newCard = $("<input>",{
+      type: 'button',
+    value:'Flip Card #'+ currentQuestionNumber,
+    id: 'btnQuestion'+ currentQuestionNumber
+  })
+ 
+  var newCardDelete = $("<input>",{
+      type: 'button',
+    value:'DELETE',
+    id: 'btnDelete'+ currentQuestionNumber
+  })
+ 
+  questions[currentQuestionNumber]= currentQuestionText;
+ 
+  newCard.on("click",function(){
+      var currentText = newCard.val();
+      newCard.attr("value",questions[currentQuestionNumber]);
+      questions[currentQuestionNumber]= currentText;
+  });
+ 
+   newCardDelete.on("click",function(){
+    $("#questionRow"+currentQuestionNumber).remove();
+   });
+ 
+  newColumn.append(newCard);
+  newColumn.append("|----|");
+  newColumn.append(newCardDelete);
+  newRow.append(newColumn);
+  cardsTable.append(newRow);
+  latestQuestionNumber++;
+})
+
+-->
+</script>
+<div id="footer">Licensed under MIT by Kiran Kashyap</div>
+</body>
+</html>
