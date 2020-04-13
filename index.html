@@ -1,17 +1,52 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<style>
+body{
+font-family: "Comic Sans MS", cursive, sans-serif
+}
+input,  button{font-family:inherit;}
+.button {
+   /* Green */
+   border-radius: 12px;background-color: #4CAF50; 
+  text-align: center;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#txtQuestionToAdd {
+    border-radius: 12px;
+    border: 2px solid;
+    padding: 10px; 
+	font-size: 16px;
+    width: 200px;    
+}
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;background-color: #4CAF50; 
+  text-align: center; width: 300px; white-space: normal;}
+.button5 {border-radius: 12px;background-color: #FF0000;}
+.boldtext {font-weight:bold;   font-size: 20px;}
+
+</style>
 <title>Pick A Question - Retrospective</title>
 </head>
 
 <body>
 <h1> Pick A Question - Retrospective </h1>
 
-Question: <input type="text" id="txtQuestionToAdd"/>
-<input type="button" id="btnAdd" class="btnAdd" value='Add'/>
-
+<span class="boldtext">Question:</span> <input type="text" id="txtQuestionToAdd" class="w3-input w3-border w3-round-large"/>
+<input type="button" class="button" id="btnAdd" class="btnAdd" value='Add'/>
 <div id="cards">
-<table border="1" id="cardsContainer">
+<table id="cardsContainer">
 
 
 </table>
@@ -20,7 +55,6 @@ Question: <input type="text" id="txtQuestionToAdd"/>
 </div>
 
 <div id="log"/>
-
 
 <script language="javascript">
 <!--
@@ -39,16 +73,16 @@ addButton.on("click", function(){
   var newRow = $("<tr>",{
       id:'questionRow'+ currentQuestionNumber
   });
-  var newColumn = $("<td>");
+  var newColumn = $("<td valign='middle'>");
   var newCard = $("<input>",{
-      type: 'button',
+      type: 'button', class: 'button button4',
     value:'Flip Card #'+ currentQuestionNumber,
     id: 'btnQuestion'+ currentQuestionNumber
   })
  
   var newCardDelete = $("<input>",{
       type: 'button',
-    value:'DELETE',
+    value:'X', class: 'button button5',
     id: 'btnDelete'+ currentQuestionNumber
   })
  
@@ -65,7 +99,6 @@ addButton.on("click", function(){
    });
  
   newColumn.append(newCard);
-  newColumn.append("|----|");
   newColumn.append(newCardDelete);
   newRow.append(newColumn);
   cardsTable.append(newRow);
