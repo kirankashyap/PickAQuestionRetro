@@ -1,117 +1,128 @@
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <html>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-<style>
-body{
-font-family: "Comic Sans MS", cursive, sans-serif
-}
-input,  button{font-family:inherit;}
-.button {
-   /* Green */
-   border-radius: 12px;background-color: #4CAF50;
-  text-align: center;
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-#txtQuestionToAdd {
-    border-radius: 12px;
-    border: 2px solid;
-    padding: 10px;
-	font-size: 16px;
-    width: 200px;
-}
-.button1 {border-radius: 2px;}
-.button2 {border-radius: 4px;}
-.button3 {border-radius: 8px;}
-.button4 {border-radius: 12px;background-color: #4CAF50;
-  text-align: center; width: 300px; white-space: normal;}
-.button5 {border-radius: 12px;background-color: #FF0000;}
-.boldtext {font-weight:bold;   font-size: 20px;}
-.header{
-  padding:10px;
-  color: #000;
-  margin-bottom: 10px;
-}
+    <style>
+    body{
+    font-family: "Comic Sans MS", cursive, sans-serif
+    }
+    input,  button{font-family:inherit;}
+    .button {
+       /* Green */
+       border-radius: 12px;background-color: #4CAF50;
+      text-align: center;
+      border: none;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    #txtQuestionToAdd {
+        border-radius: 12px;
+        border: 2px solid;
+        padding: 10px;
+    	font-size: 16px;
+        width: 200px;
+    }
+    .button1 {border-radius: 2px;}
+    .button2 {border-radius: 4px;}
+    .button3 {border-radius: 8px;}
+    .button4 {border-radius: 12px;background-color: #4CAF50;
+      text-align: center; width: 300px; white-space: normal;}
+    .button5 {border-radius: 12px;background-color: #FF0000;}
+    .boldtext {font-weight:bold;   font-size: 20px;}
+    .header{
+      padding:10px;
+      color: #000;
+      margin-bottom: 10px;
+    }
 
-</style>
-<title>Pick A Question - Retrospective</title>
-</head>
+    </style>
+    <title>Pick A Question - Retrospective</title>
+    </head>
 
-<body>
-<div class="header">
-<h1> Pick A Question - Retrospective </h1>
-</div>
-<span class="boldtext">Question:</span> <input type="text" id="txtQuestionToAdd" class="w3-input w3-border w3-round-large"/>
-<input type="button" class="button" id="btnAdd" class="btnAdd" value='Add'/>
-<div id="cards">
-<table id="cardsContainer">
-
-
-</table>
+    <body>
+    <div class="header">
+    <h1> Pick A Question - Retrospective </h1>
+    </div>
+    <span class="boldtext">Question:</span> <input type="text" id="txtQuestionToAdd" class="w3-input w3-border w3-round-large"/>
+    <input type="button" class="button" id="btnAdd" class="btnAdd" value='Add'/>
+    <div id="cards">
+    <table id="cardsContainer">
 
 
-</div>
-
-<div id="log"/>
-
-<script language="javascript">
-<!--
-var addButton = $("#btnAdd");
-var txtboxQuestion = $("#txtQuestionToAdd");
-var cardsTable= $("#cardsContainer");
-var questions = {};
-var latestQuestionNumber = 0;
+    </table>
 
 
+    </div>
 
-addButton.on("click", function(){
-  var numberOfQuestions = latestQuestionNumber;
-  var currentQuestionNumber = numberOfQuestions + 1;
-  var currentQuestionText = txtboxQuestion.val();
-  var newRow = $("<tr>",{
-      id:'questionRow'+ currentQuestionNumber
-  });
-  var newColumn = $("<td valign='middle'>");
-  var newCard = $("<input>",{
-      type: 'button', class: 'button button4',
-    value:'Open Question #'+ currentQuestionNumber,
-    id: 'btnQuestion'+ currentQuestionNumber
-  })
+    <div id="log"/>
 
-  var newCardDelete = $("<input>",{
-      type: 'button',
-    value:'X', class: 'button button5',
-    id: 'btnDelete'+ currentQuestionNumber
-  })
+    <script language="javascript">
+    <!--
+    var addButton = $("#btnAdd");
+    var txtboxQuestion = $("#txtQuestionToAdd");
+    var cardsTable= $("#cardsContainer");
+    var questions = {};
+    var latestQuestionNumber = 0;
 
-  questions[currentQuestionNumber]= currentQuestionText;
 
-  newCard.on("click",function(){
-      var currentText = newCard.val();
-      newCard.attr("value",questions[currentQuestionNumber]);
-      questions[currentQuestionNumber]= currentText;
-  });
 
-   newCardDelete.on("click",function(){
-    $("#questionRow"+currentQuestionNumber).remove();
-   });
+    addButton.on("click", function(){
+      var numberOfQuestions = latestQuestionNumber;
+      var currentQuestionNumber = numberOfQuestions + 1;
+      var currentQuestionText = txtboxQuestion.val();
+      var newRow = $("<tr>",{
+          id:'questionRow'+ currentQuestionNumber
+      });
+      var newColumn = $("<td valign='middle'>");
+      var newCard = $("<input>",{
+          type: 'button', class: 'button button4',
+        value:'Open Question #'+ currentQuestionNumber,
+        id: 'btnQuestion'+ currentQuestionNumber
+      })
 
-  newColumn.append(newCard);
-  newColumn.append(newCardDelete);
-  newRow.append(newColumn);
-  cardsTable.append(newRow);
-  latestQuestionNumber++;
-})
+      var newCardDelete = $("<input>",{
+          type: 'button',
+        value:'X', class: 'button button5',
+        id: 'btnDelete'+ currentQuestionNumber
+      })
 
--->
+      questions[currentQuestionNumber]= currentQuestionText;
+
+      newCard.on("click",function(){
+          var currentText = newCard.val();
+          newCard.attr("value",questions[currentQuestionNumber]);
+          questions[currentQuestionNumber]= currentText;
+      });
+
+       newCardDelete.on("click",function(){
+        $("#questionRow"+currentQuestionNumber).remove();
+       });
+
+      newColumn.append(newCard);
+      newColumn.append(newCardDelete);
+      newRow.append(newColumn);
+      cardsTable.append(newRow);
+      latestQuestionNumber++;
+    })
+
+    -->
+    </script>
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163414963-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-163414963-1');
 </script>
-</body>
-</html>
+
+    </body>
+    </html>
